@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monster Quest MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Monster Quest MVP</h1>
+      <p class="help">Move with arrow keys / WASD. Random encounters in grass. Capture wild monsters.</p>
+
+      <div id="world" class="panel">
+        <div id="map"></div>
+        <div class="hud">
+          <span>HP: <b id="playerHp"></b></span>
+          <span>Monsters: <b id="partyCount"></b></span>
+          <span>Position: <b id="pos"></b></span>
+        </div>
+      </div>
+
+      <div id="battle" class="panel hidden">
+        <h2>Battle!</h2>
+        <p id="battleText"></p>
+        <div class="stats">
+          <div>Your <span id="allyName"></span> HP: <b id="allyHp"></b></div>
+          <div>Wild <span id="enemyName"></span> HP: <b id="enemyHp"></b></div>
+        </div>
+        <div class="actions">
+          <button id="attackBtn">Attack</button>
+          <button id="captureBtn">Capture Orb</button>
+          <button id="runBtn">Run</button>
+        </div>
+      </div>
+
+      <div id="log" class="panel log"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
