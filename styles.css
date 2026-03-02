@@ -18,3 +18,11 @@ h1 { margin:0 0 6px; }
 #runBtn { background:#6b7280; color:white; }
 .log { min-height:90px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; white-space:pre-wrap; }
 .stats { margin:8px 0 12px; color:#d1d5db; }
+.mobile-controls { display:none; margin-top:10px; }
+.mobile-controls button { width:56px; height:56px; border-radius:12px; border:0; margin:4px; font-size:22px; background:#374151; color:white; }
+.mobile-controls .row { display:flex; justify-content:center; }
+@media (max-width: 768px) {
+  #map { grid-template-columns:repeat(12, 24px); }
+  .tile { width:24px; height:24px; font-size:10px; }
+  .mobile-controls { display:block; text-align:center; }
+}

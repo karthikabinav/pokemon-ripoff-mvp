@@ -136,19 +136,33 @@ document.getElementById("runBtn").onclick = () => {
   }
 };
 
-window.addEventListener("keydown", (e) => {
+function movePlayer(dx, dy) {
   if (inBattle) return;
+  const nx = clamp(player.x + dx, 1, W - 2);
+  const ny = clamp(player.y + dy, 1, H - 2);
+  player.x = nx; player.y = ny;
+  renderMap();
+  tryEncounter();
+}
+
+window.addEventListener("keydown", (e) => {
   let dx = 0, dy = 0;
   if (["ArrowUp","w","W"].includes(e.key)) dy = -1;
   if (["ArrowDown","s","S"].includes(e.key)) dy = 1;
   if (["ArrowLeft","a","A"].includes(e.key)) dx = -1;
   if (["ArrowRight","d","D"].includes(e.key)) dx = 1;
   if (!dx && !dy) return;
-  const nx = clamp(player.x + dx, 1, W - 2);
-  const ny = clamp(player.y + dy, 1, H - 2);
-  player.x = nx; player.y = ny;
-  renderMap();
-  tryEncounter();
+  movePlayer(dx, dy);
+});
+
+document.querySelectorAll("#mobileControls button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const dir = btn.getAttribute("data-dir");
+    if (dir === "up") movePlayer(0, -1);
+    if (dir === "down") movePlayer(0, 1);
+    if (dir === "left") movePlayer(-1, 0);
+    if (dir === "right") movePlayer(1, 0);
+  });
 });
 
 buildMap();
